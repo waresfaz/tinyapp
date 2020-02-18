@@ -8,10 +8,10 @@ app.set('view engine', 'ejs')
 
 function generateRandomString() {
   let result = '';
-  let chars = '12346789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
+  let chars = '1234567890abcdefghijklmnopqrstuvwxyz'
   
-  for (let i = 0; i <= 6; i++) {
-    let gen = Math.floor(Math.random() * (63 - 0) + 0);
+  for (let i = 0; i <= 5; i++) {
+    let gen = Math.floor(Math.random() * (36 - 0) + 0);
     result += chars[gen]
   }
 return result;
@@ -43,6 +43,9 @@ app.get("/urls", (req, res) => {
 app.post("/urls", (req, res) => {
   console.log(req.body);  // Log the POST request body to the console
   res.send("Ok");         // Respond with 'Ok' (we will replace this)
+  let random = generateRandomString();
+  urlDatabase[random]=req.body.longURL;
+  console.log(urlDatabase);
 });
 
 app.get("/urls/new", (req, res) => {
