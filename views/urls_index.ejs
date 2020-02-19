@@ -25,7 +25,8 @@
             <tr>
               <td><%= url %></td>
               <td><%= urls[url] %></td>
-              <td><form method="POST" action="/urls/9sm5xK/delete"><button type="button" class="btn btn-danger">Delete</button></form>
+              <!-- this line below is used to make the delete button send the request to the server ==> app.post("/urls/:shortURL/delete",-->
+              <td><form method="POST" action="/urls/<%= url %>/delete"><button type="submit" class="btn btn-danger">Delete</button></form>
               </td>
             </tr>
           <% } %>
